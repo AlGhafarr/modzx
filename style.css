@@ -1,0 +1,483 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Mengatur box-sizing agar lebih mudah mengatur elemen */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* General styling */
+body {
+    font-family: Arial, sans-serif;
+    background: url('asset/cover.png') no-repeat center center fixed; /* Mengatur gambar latar belakang */
+    background-size: cover; /* Memastikan gambar memenuhi seluruh lebar dan tinggi layar */
+    color: white; /* Warna teks default */
+}
+
+/* Header and Navbar */
+header {
+    display: flex; /* Mengatur layout header dengan flexbox */
+    justify-content: space-between; /* Menjaga jarak antara logo dan menu */
+    align-items: center; /* Vertikal tengah */
+    background-color: rgba(48, 48, 48, 0.8); /* Transparansi pada navbar */
+    padding: 10px 40px; /* Jarak atas 10px dan jarak kiri/kanan 40px */
+    position: fixed; /* Membuat navbar tetap di atas saat scroll */
+    top: 0; /* Memastikan navbar di atas */
+    width: calc(100% - 80px); /* Mengurangi lebar navbar agar tidak menempel ke tepi */
+    left: 40px; /* Memberi jarak kiri */
+    z-index: 1000; /* Memastikan navbar selalu di atas konten lainnya */
+    border-radius: 0 0 20px 20px; /* Sudut tumpul di bawah navbar */    
+}
+
+.logo img {
+    width: 40px; /* Ukuran gambar logo */
+    height: auto; /* Menjaga proporsi logo */
+}
+
+nav ul {
+    display: flex; /* Mengatur menu navbar dengan flexbox */
+    list-style-type: none; /* Menghilangkan bullet list */
+}
+
+nav ul li {
+    margin-right: 20px; /* Jarak antara item menu */
+}
+
+nav ul li a {
+    color: white; /* Warna teks link */
+    text-decoration: none; /* Menghilangkan garis bawah pada link */
+    font-size: 18px; /* Ukuran font link */
+}
+
+/* Hamburger menu for small screens */
+.hamburger {
+    display: none; /* Tersembunyi di layar besar */
+    flex-direction: column; /* Mengatur hamburger dalam kolom */
+    cursor: pointer; /* Menunjukkan bahwa ini dapat diklik */
+}
+
+.hamburger .line {
+    width: 25px; /* Lebar garis hamburger */
+    height: 3px; /* Tinggi garis hamburger */
+    background-color: white; /* Warna garis hamburger */
+    margin: 3px 0; /* Jarak antara garis */
+}
+
+/* Sidebar (for small screens) */
+.sidebar {
+    position: fixed; /* Mengatur sidebar tetap di posisi */
+    top: 0; /* Menempel ke bagian atas */
+    left: -100%; /* Tersembunyi di luar layar */
+    width: 200px; /* Lebar sidebar */
+    height: 100%; /* Tinggi sidebar */
+    background-color: rgba(48, 48, 48, 0.8);  /* Transparansi pada sidebar */
+    padding: 20px; /* Padding dalam sidebar */
+    transition: left 0.3s ease; /* Efek transisi saat sidebar muncul */
+}
+
+.sidebar-links {
+    list-style-type: none; /* Menghilangkan bullet list */
+}
+
+.sidebar-links li {
+    margin-bottom: 20px; /* Jarak antara item sidebar */
+}
+
+.sidebar-links li a {
+    color: white; /* Warna teks link dalam sidebar */
+    text-decoration: none; /* Menghilangkan garis bawah pada link */
+}
+
+/* Sidebar active state */
+.sidebar.active {
+    left: 0; /* Menampilkan sidebar */
+}
+
+/* Main Content */
+.main-content {
+    display: flex; /* Mengatur layout dengan flexbox */
+    flex-direction: column; /* Default ke kolom untuk layar kecil */
+    align-items: center; /* Memusatkan konten */
+    min-height: 80vh; /* Tinggi minimum untuk konten */
+    padding: 20px; /* Padding dalam konten */
+    background: url(asset/1.bc.png); /* Mengatur gambar latar belakang */
+    border-radius: 20px; /* Sudut tumpul */
+    margin: 80px 20px 20px; /* Jarak atas untuk menghindari navbar */
+}
+
+/* Teks artikel */
+.article-text {
+    text-align: left; /* Menempatkan teks di kiri */
+    margin-bottom: 20px; /* Jarak antara teks dan box group */
+    font-size: 20px; /* Ukuran font teks artikel */
+    color: white; /* Warna teks */
+    max-width: 600px; /* Maksimal lebar untuk artikel */
+}
+
+/* Box group wrapper for image buttons */
+.box-group-wrapper {
+    display: flex; /* Mengatur layout box group dengan flexbox */
+    justify-content: center; /* Memusatkan box group */
+    align-items: center; /* Vertikal tengah */
+    padding: 10px; /* Padding dalam box group wrapper */
+    border-radius: 10px; /* Sudut tumpul */
+    max-width: 100%; /* Maksimal lebar box group */
+    overflow: hidden; /* Menyembunyikan overflow */
+}
+
+.box-group {
+    display: flex; /* Mengatur layout box group dengan flexbox */
+    justify-content: flex-start; /* Memusatkan gambar */
+    align-items: center; /* Vertikal tengah */
+    background-color: rgba(255, 255, 255, 0.1); /* Latar belakang dengan transparansi */
+    padding: 10px; /* Padding dalam box group */
+    border-radius: 10px; /* Sudut tumpul */
+    flex-wrap: nowrap; /* Mencegah item berpindah ke baris baru */
+    overflow-x: auto; /* Mengizinkan scrolling horizontal */
+}
+
+/* Ukuran gambar potret */
+.box-group img {
+    width: 80px;   /* Lebar gambar potret */
+    height: 120px; /* Tinggi gambar potret */
+    transition: all 0.3s ease; /* Efek transisi untuk hover */
+    margin: 0 5px; /* Tambahkan jarak antara gambar */
+}
+
+.box-group img.selected {
+    width: 100px;  /* Lebar gambar yang dipilih */
+    height: 150px; /* Tinggi gambar yang dipilih */
+}
+
+/* Hover effect untuk gambar yang dapat dipilih */
+.box-group img:hover {
+    transform: scale(1.05); /* Efek zoom saat hover */
+}
+
+/* About Section */
+.about {
+    padding: 20px; /* Padding dalam about section */
+    text-align: center; /* Rata tengah teks */
+    display: flex; /* Menggunakan flexbox untuk pusatkan konten */
+    flex-direction: column; /* Mengatur arah konten dalam kolom */
+    align-items: center; /* Memusatkan konten secara horizontal */
+    justify-content: center; /* Memusatkan konten secara vertikal */
+    min-height: 300px; /* Mengatur tinggi minimum untuk section */
+    background-color: black;
+    opacity: 80%;
+}
+
+.about p {
+    padding: 0;
+    margin: 1.5px;
+    margin-top: 12px;
+}
+
+.about ul {
+    list-style-type: none; /* Menghilangkan bullet list */
+    padding: 0; /* Menghilangkan padding default */
+    margin-top: 10px; /* Jarak antara judul dan daftar */
+}
+
+.about ul li {
+    margin: 5px 0; /* Jarak antara item daftar */
+    color: white; /* Warna teks item daftar */
+}
+
+.about-images {
+    display: flex; /* Menggunakan flexbox untuk tata letak */
+    justify-content: center; /* Memusatkan gambar */
+    flex-wrap: wrap; /* Membiarkan gambar berpindah baris jika diperlukan */
+    margin-top: 20px; /* Jarak atas untuk pemisahan dari teks */
+}
+
+.about-image {
+    width: 100px; /* Lebar gambar */
+    height: auto; /* Menjaga proporsi gambar */
+    margin: 10px; /* Jarak antara gambar */
+    border-radius: 10px; /* Sudut tumpul untuk gambar */
+    transition: transform 0.3s ease; /* Efek transisi untuk hover */
+}
+
+.about-image:hover {
+    transform: scale(1.1); /* Efek zoom saat hover */
+}
+
+.software-title {
+    font-size: 24px; /* Ukuran font untuk judul software */
+    color: white; /* Warna teks */
+    margin: 10px 0; /* Jarak atas dan bawah */
+}
+
+.order-flow {
+    background-color: rgba(44, 44, 44, 0.8); /* Warna latar belakang dengan transparansi */
+    padding: 20px; /* Padding dalam order flow */
+    border-radius: 10px; /* Sudut tumpul untuk latar belakang */
+    max-width: 600px; /* Batasan lebar untuk order flow */
+    margin: 20px auto; /* Margin atas/bawah 20px dan pusatkan secara horizontal */
+    text-align: center; /* Rata tengah untuk teks */
+}
+
+
+.order-flow h2 {
+    font-size: 28px; /* Ukuran font judul */
+    color: #fff; /* Warna teks judul */
+    margin-bottom: 20px; /* Jarak bawah judul */
+    text-transform: uppercase; /* Mengubah teks menjadi huruf kapital */
+    letter-spacing: 2px; /* Jarak antar huruf */
+    font-weight: bold; /* Menebalkan huruf */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Bayangan pada teks judul */
+}
+
+.order-flow ol {
+    list-style: none; /* Menghilangkan bullet list */
+    padding: 0; /* Menghilangkan padding default */
+}
+
+.order-step {
+    font-size: 20px; /* Ukuran font untuk langkah-langkah */
+    color: #fff; /* Warna teks langkah-langkah */
+    margin: 15px 0; /* Jarak antara langkah-langkah */
+    padding: 10px; /* Padding untuk setiap langkah */
+    background-color: rgba(255, 255, 255, 0.2); /* Latar belakang transparan */
+    border-radius: 10px; /* Sudut tumpul */
+    transition: background-color 0.3s; /* Transisi untuk efek hover */
+}
+
+.order-step:hover {
+    background-color: rgba(255, 255, 255, 0.3); /* Mengubah latar belakang saat hover */
+    transform: scale(1.05); /* Efek zoom saat hover */
+}
+
+/* Animasi saat muncul */
+.order-step {
+    opacity: 0; /* Sembunyikan elemen pada awal */
+    transform: translateY(20px); /* Posisi sedikit ke bawah */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Animasi transisi */
+}
+
+.order-step.visible {
+    opacity: 1; /* Tampilkan elemen */
+    transform: translateY(0); /* Kembalikan posisi ke normal */
+}
+
+.portfolio-slider {
+    display: flex;
+    justify-content: space-around; /* Membuat gambar berjejer secara rata */
+    align-items: center;
+    margin: 50px auto;
+    width: 90%; /* Batasi lebar slider */
+}
+
+.portfolio-image-container {
+    width: 150px;
+    height: 180px;
+    margin: 10px;
+    text-align: center;
+    position: relative;
+}
+
+.portfolio-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 20% 50% 30% 50%;
+    transition: opacity 0.5s ease, transform 0.3s ease;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    opacity: 1; /* Awalnya gambar tidak terlihat */
+}
+
+.portfolio-caption {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: bold;
+    opacity: 1; /* Awalnya teks tidak terlihat */
+    transition: opacity 0.5s ease; /* Efek transisi pada teks */
+}
+
+/* Saat gambar dan teks terlihat */
+.portfolio-image-container.show .portfolio-image,
+.portfolio-image-container.show .portfolio-caption {
+    opacity: 1; /* Gambar dan teks muncul secara bersamaan */
+}
+
+.portfolio-image:hover {
+    transform: scale(1.1);
+}
+
+.portfolio-image-container::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+    z-index: -1;
+}
+
+
+/* Footer */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+footer {
+    background-color: #111;
+    padding: 50px 0;
+    color: #fff;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
+}
+
+.logo {
+    margin-bottom: 20px;
+}
+
+.logo h2 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo p {
+    font-size: 14px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.footer-links ul {
+    list-style-type: none;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.footer-links ul li {
+    margin: 10px 0;
+}
+
+.footer-links ul li a {
+    text-decoration: none;
+    color: #bbb;
+}
+
+.footer-links ul li strong {
+    color: #fff;
+}
+
+.social-icons {
+    margin-bottom: 20px;
+}
+
+.social-icons a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+}
+
+.footer-bottom p {
+    font-size: 14px;
+    color: #bbb;
+}
+.social-icons a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 24px;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #f39c12; /* Mengubah warna ikon saat hover */
+}
+
+
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column; /* Tetap menggunakan kolom pada perangkat kecil */
+        margin: 60px 10px 20px; /* Jarak atas lebih kecil di perangkat kecil */
+        min-height: 75vh; /* Mengatur tinggi minimum lebih kecil di perangkat kecil */
+    }
+
+    .article-text {
+        text-align: center; /* Rata tengah untuk perangkat kecil */
+    }
+
+    .box-group-wrapper {
+        width: 100%; /* Membuat box group responsif */
+        justify-content: center; /* Memusatkan box group */
+    }
+
+    .box-group img {
+        width: 70px;  /* Ukuran gambar lebih kecil di perangkat kecil */
+        height: 100px; /* Tinggi gambar lebih kecil di perangkat kecil */
+    }
+
+    .box-group img.selected {
+        width: 90px;  /* Lebar gambar yang dipilih di perangkat kecil */
+        height: 130px; /* Tinggi gambar yang dipilih di perangkat kecil */
+    }
+
+    /* Show hamburger on smaller screens */
+    .hamburger {
+        display: flex; /* Menampilkan hamburger di layar kecil */
+    }
+
+    /* Hide the navbar links on small screens */
+    .nav-links {
+        display: none; /* Menyembunyikan link navbar pada perangkat kecil */
+    }
+}
+
+@media (max-width: 480px) {
+    .box-group img {
+        width: 60px;  /* Ukuran gambar lebih kecil di perangkat ekstra kecil */
+        height: 80px; /* Tinggi gambar lebih kecil di perangkat ekstra kecil */
+    }
+
+    .box-group img.selected {
+        width: 80px;  /* Lebar gambar yang dipilih di perangkat ekstra kecil */
+        height: 120px; /* Tinggi gambar yang dipilih di perangkat ekstra kecil */
+    }
+}
+
+/* Untuk tampilan landscape */
+@media (orientation: landscape) {
+    .main-content {
+        flex-direction: row; /* Mengatur menjadi baris untuk tampilan landscape */
+        justify-content: space-between; /* Menjaga jarak antara teks dan box group */
+    }
+
+    .article-text {
+        margin-right: 20px; /* Jarak antara teks box dan box group */
+        flex: 1; /* Agar teks mengambil ruang yang tersedia */
+        text-align: left; /* Rata kiri teks */
+    }
+
+    .box-group-wrapper {
+        flex: 1; /* Agar box group mengambil ruang yang tersedia */
+    }
+}
